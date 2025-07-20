@@ -1,0 +1,42 @@
+services:
+  db:
+    build:
+      context: ./docker/mongo
+    ports:
+      - 27017:27017
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: ${MONGODB_ROOT_USERNAME}
+      MONGO_INITDB_ROOT_PASSWORD: ${MONGODB_ROOT_PASSWORD}
+      MONGO_INITDB_DATABASE: ChatBot
+    command: mongod --config /etc/mongod.conf
+    volumes:
+      - ./data:/data/db
+    networks:
+      - mongo-network
+
+
+  python-api:
+    build:
+      context: .
+      dockerfile: docker/python/Dockerfile
+    volumes:
+      - ./app:/app
+      - ./requirements.txt:/requirements.txt
+      - ./tests:/tests
+
+    environment:
+      MONGO_HOST: ${MONGO_HOST}
+      MONGO_PORT: ${MONGO_PORT}
+      MONGODB_ROOT_USERNAME: ${MONGODB_ROOT_USERNAME}
+      MONGODB_ROOT_PASSWORD: ${MONGODB_ROOT_PASSWORD}
+    ports:
+      - 8000:8000
+    depends_on:
+      - db
+    networks:
+      - mongo-network
+
+networks:
+  mongo-network:
+    driver: bridge
+
