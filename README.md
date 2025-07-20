@@ -54,10 +54,9 @@ A Python REST API for managing chatbot interactions with MongoDB backend.
 
 - `POST /api/v1/questions` - Create a new question-answer pair
 - `GET /api/v1/questions` - Get all questions (paginated)
-- `GET /api/v1/questions/{question}` - Get answer for specific question
-- 
+- `GET /api/v1/questions/?q={question}` - Get answer for specific question
 
-## Environment Variables
+## Environment Variables (FOR TESTING PURPOSES)
 
 | Variable | Description | Default |
 |----------|-------------|---------|
@@ -66,40 +65,4 @@ A Python REST API for managing chatbot interactions with MongoDB backend.
 | MONGODB_ROOT_USERNAME | MongoDB username | admin |
 | MONGODB_ROOT_PASSWORD | MongoDB password | password |
 
-## Project Structure
-```
-python-api/ ├── app/ │ ├── api/ │ │ └── v1/ # API version 1 routes │ ├── core/ # Core functionality │ ├── models/ # Data models │ └── services/ # Business logic ├── tests/ # Test cases ├── docker/ # Docker configuration └── requirements/ # Dependencies
-``` 
 
-## Testing
-
-Run the test suite:
-```
-bash pytest
-``` 
-
-## Development
-
-1. Create a new branch:
-   ```bash
-   git checkout -b feature/your-feature
-   ```
-
-2. Make your changes and test
-3. Push your branch and create a PR
-
-## Error Handling
-
-The API uses standard HTTP status codes:
-
-- 200: Success
-- 400: Bad request
-- 404: Not found
-- 409: Conflict (e.g., duplicate question)
-- 500: Server error
-
-## Rate Limiting
-
-- 5 requests per minute per IP address
-- Status code 429 returned when limit exceeded
-```
