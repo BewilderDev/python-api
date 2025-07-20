@@ -52,9 +52,9 @@ A Python REST API for managing chatbot interactions with MongoDB backend.
 
 ### Questions
 
-- `POST /api/v1/questions` - Create a new question-answer pair
-- `GET /api/v1/questions` - Get all questions (paginated)
-- `GET /api/v1/questions/?q={question}` - Get answer for specific question
+- `POST /api/questions` - Create a new question-answer pair
+- `GET /api/questions` - Get all questions (paginated)
+- `GET /api/questions/?q={question}` - Get answer for specific question
 
 ## Environment Variables (FOR TESTING PURPOSES)
 
