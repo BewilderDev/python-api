@@ -60,11 +60,12 @@ A Python REST API for managing chatbot interactions with MongoDB backend.
 
 ## Environment Variables (FOR TESTING PURPOSES)
 
-| Variable | Description | Default      |
-|----------|-------------|--------------|
-| MONGO_HOST | MongoDB host | db           |
-| MONGO_PORT | MongoDB port | 27017        |
-| MONGODB_ROOT_USERNAME | MongoDB username | chatbot_user |
-| MONGODB_ROOT_PASSWORD | MongoDB password | root         |
+| Variable | Description                | Default      |
+|----------|----------------------------|--------------|
+| MONGO_HOST | MongoDB host               | db           |
+| MONGO_PORT | MongoDB port               | 27017        |
+| MONGODB_ROOT_USERNAME | MongoDB username           | chatbot_user |
+| MONGODB_ROOT_PASSWORD | MongoDB password           | root         |
+| API_KEY | API Key for authentication | sk-2fY9pLwqT7vXz5KeRjMn0bQdG6SaEhUv         |
 
 
