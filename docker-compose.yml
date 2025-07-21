@@ -14,21 +14,14 @@ services:
     networks:
       - mongo-network
 
-
   python-api:
     build:
       context: .
       dockerfile: docker/python/Dockerfile
+    env_file:
+        - .env
     volumes:
-      - ./app:/app
-      - ./requirements.txt:/requirements.txt
-      - ./tests:/tests
-
-    environment:
-      MONGO_HOST: ${MONGO_HOST}
-      MONGO_PORT: ${MONGO_PORT}
-      MONGODB_ROOT_USERNAME: ${MONGODB_ROOT_USERNAME}
-      MONGODB_ROOT_PASSWORD: ${MONGODB_ROOT_PASSWORD}
+      - ./:/app
     ports:
       - 8000:8000
     depends_on:

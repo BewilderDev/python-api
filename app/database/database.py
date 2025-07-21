@@ -2,15 +2,30 @@ from pymongo import MongoClient
 from typing import Optional, Dict, Any
 import os
 
+class MongoConnection:
+    _client: Optional[MongoClient] = None
+
+    @classmethod
+    def get_client(cls) -> MongoClient:
+        if cls._client is None:
+            cls._client = MongoClient(
+                host=os.getenv("MONGO_HOST"),
+                port=int(os.getenv("MONGO_PORT")),
+                username=os.getenv("MONGODB_ROOT_USERNAME"),
+                password=os.getenv("MONGODB_ROOT_PASSWORD"),
+                authSource="ChatBot"
+            )
+        return cls._client
+
+    @classmethod
+    def close_connection(cls):
+        if cls._client:
+            cls._client.close()
+            cls._client = None
+
 class Database:
-    def __init__(self, collection_name: str, db_name="ChatBot"):
-        self.client = MongoClient(
-            host=os.environ.get("MONGO_HOST"),
-            port=int(os.environ.get("MONGO_PORT")),
-            username=os.environ.get("MONGODB_ROOT_USERNAME"),
-            password=os.environ.get("MONGODB_ROOT_PASSWORD"),
-            authSource="ChatBot"  # Specify the authentication database
-        )
+    def __init__(self, collection_name, db_name="ChatBot"):
+        self.client = MongoConnection.get_client()
         self.db = self.client[db_name]
         self.collection = self.db[collection_name]
 
