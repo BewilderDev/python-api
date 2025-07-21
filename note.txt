@@ -1,0 +1,7 @@
+write comments on functions and variables
+add a make file for building the project, running tests, docker-compose up --build
+standardise responses format from api
+rate limting
+
+
+docker-compose up --build; docker exec -it python-api-python-api-1 bash

@@ -28,25 +28,27 @@ A Python REST API for managing chatbot interactions with MongoDB backend.
    # Edit .env with your configurations
    ```
 
-3. **Run with Docker**
+3. **Build the container**
    ```bash
-   docker-compose up -d
+   docker-compose up --build
    ```
+   
+4. **Access the container**
+   ```bash
+   docker exec -it python-api-python-api-1 sh
+   ```
+   
+5. **Install Dependencies**
+    ```bash
+   poetry install
+    ```
+
+6. **Run the application**
+   ```bash
+   python app/main.py
+    ```
 
    The API will be available at `http://localhost:8000`
-
-4. **Run locally (without Docker)**
-   ```bash
-   # Create and activate virtual environment
-   python -m venv venv
-   source venv/bin/activate  # On Windows: venv\Scripts\activate
-   
-   # Install dependencies
-   pip install -r requirements.txt
-   
-   # Run the application
-   python main.py
-   ```
 
 ## API Endpoints
 
